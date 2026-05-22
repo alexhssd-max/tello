@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BubbleSort — Programación Tradicional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-bracket">{</span>
+        <span class="logo-text">BubbleSort</span>
+        <span class="logo-bracket">}</span>
+      </div>
+      <p class="header-sub">Programación Tradicional I — Algoritmo de la Burbuja</p>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ═══════════════════════════════ SECCIÓN 01: INGRESAR DATOS ═════════════════════════════ -->
+    <section class="card" id="sec-input">
+      <div class="card-label">01</div>
+      <h2 class="card-title">INGRESAR DATOS</h2>
+
+      <div class="field-group">
+        <label class="field-label">// cantidad de números</label>
+        <input type="number" id="inp-n" class="field-input" min="1" max="50" placeholder="5" />
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">// lista de números (burbujas dinámicas)</label>
+        <div id="dynamic-inputs" class="bubbles-container"></div>
+      </div>
+
+      <button class="btn-confirm" id="btn-confirm">
+        <span class="btn-arrow">►</span> CONFIRMAR
+      </button>
+
+      <p class="error-msg" id="err-input"></p>
+    </section>
+
+    <!-- ═══════════════════════════════ ARRAY VISUAL ══════════════════════════════════════════ -->
+    <section class="card hidden" id="sec-array">
+      <div class="card-label">02</div>
+      <h2 class="card-title">ARRAY ACTUAL</h2>
+      <p class="array-info">// <span id="array-count">0</span> elemento(s) en el array</p>
+      <div class="bubbles-container" id="bubbles-display"></div>
+
+      <div class="add-more-area">
+        <button class="btn-secondary" id="btn-show-add">
+          <span>+</span> AGREGAR MÁS NÚMEROS
+        </button>
+      </div>
+
+      <div class="hidden" id="add-more-panel">
+        <div class="divider"></div>
+        <div class="field-group">
+          <label class="field-label">// cuántos números quieres agregar</label>
+          <input type="number" id="add-n" class="field-input" min="1" max="50" placeholder="3" />
+        </div>
+        <div class="field-group">
+          <label class="field-label">// nuevos números (burbujas dinámicas)</label>
+          <div id="dynamic-add-inputs" class="bubbles-container"></div>
+        </div>
+        <button class="btn-confirm" id="btn-add-confirm">
+          <span class="btn-arrow">►</span> AGREGAR
+        </button>
+        <p class="error-msg" id="err-add"></p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ SECCIÓN BÚSQUEDA ══════════════════════════════════════ -->
+    <section class="card hidden" id="sec-search">
+      <div class="card-label">03</div>
+      <h2 class="card-title">BÚSQUEDA</h2>
+      <p class="array-info">// busca en el array original sin ordenar</p>
+
+      <div class="field-group">
+        <label class="field-label">// número a buscar</label>
+        <input type="number" id="inp-search" class="field-input" placeholder="89" />
+      </div>
+
+      <button class="btn-confirm" id="btn-search">
+        <span class="btn-arrow">►</span> BUSCAR
+      </button>
+
+      <div class="result-box hidden" id="search-result">
+        <div class="bubbles-container" id="search-bubbles"></div>
+        <div class="result-stats" id="search-stats"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ SECCIÓN ORDENAMIENTO ══════════════════════════════════ -->
+    <section class="card hidden" id="sec-sort">
+      <div class="card-label">04</div>
+      <h2 class="card-title">ORDENAMIENTO BURBUJA</h2>
+
+      <button class="btn-confirm" id="btn-sort">
+        <span class="btn-arrow">►</span> EJECUTAR ORDENAMIENTO
+      </button>
+
+      <div class="hidden sort-results" id="sort-results">
+
+        <div class="sort-block">
+          <h3 class="sort-subtitle">// ascendente ↑</h3>
+          <div class="bubbles-container" id="asc-bubbles"></div>
+          <div class="comparisons-badge" id="asc-comparisons"></div>
+        </div>
+
+        <div class="sort-block">
+          <h3 class="sort-subtitle">// descendente ↓</h3>
+          <div class="bubbles-container" id="desc-bubbles"></div>
+          <div class="comparisons-badge" id="desc-comparisons"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ REPORTE FINAL ══════════════════════════════════════ -->
+    <section class="card hidden" id="sec-report">
+      <div class="card-label">05</div>
+      <h2 class="card-title">REPORTE FINAL</h2>
+      <p class="array-info">// resumen de los resultados del algoritmo</p>
+      
+      <button class="btn-confirm" id="btn-report">
+        <span class="btn-arrow">►</span> GENERAR REPORTE
+      </button>
+
+      <div class="hidden result-box" id="report-results" style="margin-top: 1rem;">
+        <div id="report-content" class="result-stats" style="text-align: left; line-height: 1.8;"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ DIAGRAMA DE FLUJO ══════════════════════════════════════ -->
+    <section class="card" id="sec-flowchart">
+      <div class="card-label">06</div>
+      <h2 class="card-title">DIAGRAMA DE FLUJO — BURBUJA</h2>
+      <p class="array-info">// algoritmo de ordenamiento ascendente y descendente</p>
+      <div class="flowchart-wrap" id="flowchart-svg"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Algoritmo de la Burbuja · Programación Tradicional I · Java</p>
+  </footer>
+
+  <script src="bubble.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>
