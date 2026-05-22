@@ -16,10 +16,10 @@
     <div class="header-inner">
       <div class="logo">
         <span class="logo-bracket">{</span>
-        <span class="logo-text">Alex Hans</span>
+        <span class="logo-text">BubbleSort</span>
         <span class="logo-bracket">}</span>
       </div>
-      <p class="header-sub">Programación Tradicional  — Algoritmo de la Burbuja</p>
+      <p class="header-sub">Programación Tradicional I — Algoritmo de la Burbuja</p>
     </div>
   </header>
 
@@ -145,6 +145,104 @@
       <h2 class="card-title">DIAGRAMA DE FLUJO — BURBUJA</h2>
       <p class="array-info">// algoritmo de ordenamiento ascendente y descendente</p>
       <div class="flowchart-wrap" id="flowchart-svg"></div>
+    </section>
+
+    <!-- ═══════════════════════════════ CÓDIGO JAVA ══════════════════════════════════════ -->
+    <section class="card" id="sec-code">
+      <div class="card-label">07</div>
+      <h2 class="card-title">CÓDIGO FUENTE (JAVA)</h2>
+      <p class="array-info">// implementación en java para consola</p>
+      
+      <div class="code-container">
+<pre><code>import java.util.Scanner;
+import java.util.Arrays;
+
+public class BubbleSort {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] arreglo = new int[0];
+        int opcion = 0;
+        
+        while (opcion != 5) {
+            System.out.println("\\n===== MENÚ BUBBLE SORT =====");
+            System.out.println("1. Ingresar N números");
+            System.out.println("2. Agregar más números al arreglo actual");
+            System.out.println("3. Buscar un número");
+            System.out.println("4. Ordenar y mostrar Reporte Final");
+            System.out.println("5. Salir");
+            System.out.print("Seleccione una opción: ");
+            opcion = scanner.nextInt();
+            
+            if (opcion == 1) {
+                System.out.print("Cantidad de números (N): ");
+                int n = scanner.nextInt();
+                arreglo = new int[n];
+                for (int i = 0; i &lt; n; i++) {
+                    System.out.print("Ingrese número " + (i + 1) + ": ");
+                    arreglo[i] = scanner.nextInt();
+                }
+            } else if (opcion == 2) {
+                System.out.print("¿Cuántos números más desea agregar?: ");
+                int m = scanner.nextInt();
+                int[] nuevo = new int[arreglo.length + m];
+                for (int i = 0; i &lt; arreglo.length; i++) nuevo[i] = arreglo[i];
+                for (int i = 0; i &lt; m; i++) {
+                    System.out.print("Ingrese número " + (i + 1) + ": ");
+                    nuevo[arreglo.length + i] = scanner.nextInt();
+                }
+                arreglo = nuevo;
+            } else if (opcion == 3) {
+                System.out.print("Ingrese el número a buscar: ");
+                int target = scanner.nextInt();
+                int pasos = 0;
+                boolean encontrado = false;
+                for (int i = 0; i &lt; arreglo.length; i++) {
+                    pasos++;
+                    if (arreglo[i] == target) {
+                        System.out.println("Encontrado en posición [" + i + "]");
+                        encontrado = true;
+                        break;
+                    }
+                }
+                if (!encontrado) System.out.println("No encontrado.");
+                System.out.println("Pasos realizados: " + pasos);
+            } else if (opcion == 4) {
+                int[] asc = Arrays.copyOf(arreglo, arreglo.length);
+                int[] desc = Arrays.copyOf(arreglo, arreglo.length);
+                int compAsc = 0, compDesc = 0;
+                
+                // Burbuja Ascendente
+                for (int i = 0; i &lt; asc.length - 1; i++) {
+                    for (int j = 0; j &lt; asc.length - 1 - i; j++) {
+                        compAsc++;
+                        if (asc[j] &gt; asc[j + 1]) {
+                            int temp = asc[j]; asc[j] = asc[j + 1]; asc[j + 1] = temp;
+                        }
+                    }
+                }
+                
+                // Burbuja Descendente
+                for (int i = 0; i &lt; desc.length - 1; i++) {
+                    for (int j = 0; j &lt; desc.length - 1 - i; j++) {
+                        compDesc++;
+                        if (desc[j] &lt; desc[j + 1]) {
+                            int temp = desc[j]; desc[j] = desc[j + 1]; desc[j + 1] = temp;
+                        }
+                    }
+                }
+                
+                System.out.println("\\n--- REPORTE ---");
+                System.out.println("a. Ascendente: " + Arrays.toString(asc));
+                System.out.println("a. Descendente: " + Arrays.toString(desc));
+                System.out.println("b. Comparaciones (Asc): " + compAsc);
+                System.out.println("b. Comparaciones (Desc): " + compDesc);
+            }
+        }
+        scanner.close();
+    }
+}</code></pre>
+      </div>
     </section>
 
   </main>
