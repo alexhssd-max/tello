@@ -118,9 +118,9 @@ $('btn-add-confirm').addEventListener('click', () => {
   $('array-count').textContent = currentArray.length;
   renderBubbles('bubbles-display', currentArray);
 
-  // Limpiar campos
+ // Limpiar campos
   $('add-n').value = '';
-  $('add-nums').value = '';
+  $('dynamic-add-inputs').innerHTML = ''; // Limpia el contenedor de burbujas real de forma segura
   hide('add-more-panel');
 
   // Resetear resultados anteriores (el array cambió)
