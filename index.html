@@ -1,172 +1,161 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>BubbleSort — Programación Tradicional</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BubbleSort — Programación Tradicional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-    <div class="bg-grid"></div>
+  <div class="bg-grid"></div>
 
-    <header class="header">
-        <div class="header-inner">
-            <div class="logo">
-                <span class="logo-bracket">{</span>
-                <span class="logo-text">ALex Hans</span>
-                <span class="logo-bracket">}</span>
-            </div>
-            <p class="header-sub">Programación Tradicional — Algoritmo de la Burbuja</p>
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-bracket">{</span>
+        <span class="logo-text">Alex Hans</span>
+        <span class="logo-bracket">}</span>
+      </div>
+      <p class="header-sub">Programación Tradicional I — Algoritmo de la Burbuja</p>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ═══════════════════════════════ SECCIÓN 01: INGRESAR DATOS ═════════════════════════════ -->
+    <section class="card" id="sec-input">
+      <div class="card-label">01</div>
+      <h2 class="card-title">INGRESAR DATOS</h2>
+
+      <div class="field-group">
+        <label class="field-label">// cantidad de números</label>
+        <input type="number" id="inp-n" class="field-input" min="1" max="50" placeholder="5" />
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">// lista de números (burbujas dinámicas)</label>
+        <div id="dynamic-inputs" class="bubbles-container"></div>
+      </div>
+
+      <button class="btn-confirm" id="btn-confirm">
+        <span class="btn-arrow">►</span> CONFIRMAR
+      </button>
+
+      <p class="error-msg" id="err-input"></p>
+    </section>
+
+    <!-- ═══════════════════════════════ ARRAY VISUAL ══════════════════════════════════════════ -->
+    <section class="card hidden" id="sec-array">
+      <div class="card-label">02</div>
+      <h2 class="card-title">ARRAY ACTUAL</h2>
+      <p class="array-info">// <span id="array-count">0</span> elemento(s) en el array</p>
+      <div class="bubbles-container" id="bubbles-display"></div>
+
+      <div class="add-more-area">
+        <button class="btn-secondary" id="btn-show-add">
+          <span>+</span> AGREGAR MÁS NÚMEROS
+        </button>
+      </div>
+
+      <div class="hidden" id="add-more-panel">
+        <div class="divider"></div>
+        <div class="field-group">
+          <label class="field-label">// cuántos números quieres agregar</label>
+          <input type="number" id="add-n" class="field-input" min="1" max="50" placeholder="3" />
         </div>
-    </header>
+        <div class="field-group">
+          <label class="field-label">// nuevos números (burbujas dinámicas)</label>
+          <div id="dynamic-add-inputs" class="bubbles-container"></div>
+        </div>
+        <button class="btn-confirm" id="btn-add-confirm">
+          <span class="btn-arrow">►</span> AGREGAR
+        </button>
+        <p class="error-msg" id="err-add"></p>
+      </div>
+    </section>
 
-    <main class="main">
+    <!-- ═══════════════════════════════ SECCIÓN BÚSQUEDA ══════════════════════════════════════ -->
+    <section class="card hidden" id="sec-search">
+      <div class="card-label">03</div>
+      <h2 class="card-title">BÚSQUEDA</h2>
+      <p class="array-info">// busca en el array original sin ordenar</p>
 
-        <section class="card" id="sec-input">
-            <div class="card-label">01</div>
-            <h2 class="card-title">INGRESAR DATOS</h2>
+      <div class="field-group">
+        <label class="field-label">// número a buscar</label>
+        <input type="number" id="inp-search" class="field-input" placeholder="89" />
+      </div>
 
-            <div class="field-group">
-                <label class="field-label">// cantidad de números</label>
-                <input type="number" id="inp-n" class="field-input" min="1" max="50" placeholder="5" />
-            </div>
+      <button class="btn-confirm" id="btn-search">
+        <span class="btn-arrow">►</span> BUSCAR
+      </button>
 
-            <div class="field-group">
-                <label class="field-label">// lista de números (burbujas dinámicas)</label>
-                <div id="dynamic-inputs" class="bubbles-container"></div>
-            </div>
+      <div class="result-box hidden" id="search-result">
+        <div class="bubbles-container" id="search-bubbles"></div>
+        <div class="result-stats" id="search-stats"></div>
+      </div>
+    </section>
 
-            <button class="btn-confirm" id="btn-confirm">
-                <span class="btn-arrow">►</span> CONFIRMAR
-            </button>
+    <!-- ═══════════════════════════════ SECCIÓN ORDENAMIENTO ══════════════════════════════════ -->
+    <section class="card hidden" id="sec-sort">
+      <div class="card-label">04</div>
+      <h2 class="card-title">ORDENAMIENTO BURBUJA</h2>
 
-            <p class="error-msg" id="err-input"></p>
-        </section>
+      <button class="btn-confirm" id="btn-sort">
+        <span class="btn-arrow">►</span> EJECUTAR ORDENAMIENTO
+      </button>
 
-        <section class="card hidden" id="sec-array">
-            <div class="card-label">02</div>
-            <h2 class="card-title">ARRAY ACTUAL</h2>
-            <p class="array-info">// <span id="array-count">0</span> elemento(s) en el array</p>
-            <div class="bubbles-container" id="bubbles-display"></div>
+      <div class="hidden sort-results" id="sort-results">
 
-            <div class="add-more-area">
-                <button class="btn-secondary" id="btn-show-add">
-                    <span>+</span> AGREGAR MÁS NÚMEROS
-                </button>
-            </div>
+        <div class="sort-block">
+          <h3 class="sort-subtitle">// ascendente ↑</h3>
+          <div class="bubbles-container" id="asc-bubbles"></div>
+          <div class="comparisons-badge" id="asc-comparisons"></div>
+        </div>
 
-            <div class="hidden" id="add-more-panel">
-                <div class="divider"></div>
-                <div class="field-group">
-                    <label class="field-label">// cuántos números quieres agregar</label>
-                    <input type="number" id="add-n" class="field-input" min="1" max="50" placeholder="3" />
-                </div>
-                <div class="field-group">
-                    <label class="field-label">// nuevos números (burbujas dinámicas)</label>
-                    <div id="dynamic-add-inputs" class="bubbles-container"></div>
-                </div>
-                <button class="btn-confirm" id="btn-add-confirm">
-                    <span class="btn-arrow">►</span> AGREGAR
-                </button>
-                <p class="error-msg" id="err-add"></p>
-            </div>
-        </section>
+        <div class="sort-block">
+          <h3 class="sort-subtitle">// descendente ↓</h3>
+          <div class="bubbles-container" id="desc-bubbles"></div>
+          <div class="comparisons-badge" id="desc-comparisons"></div>
+        </div>
 
-        <section class="card hidden" id="sec-search">
-            <div class="card-label">03</div>
-            <h2 class="card-title">BÚSQUEDA</h2>
-            <p class="array-info">// busca en el array original sin ordenar</p>
+      </div>
+    </section>
 
-            <div class="field-group">
-                <label class="field-label">// número a buscar</label>
-                <input type="number" id="inp-search" class="field-input" placeholder="89" />
-            </div>
 
-            <button class="btn-confirm" id="btn-search">
-                <span class="btn-arrow">►</span> BUSCAR
-            </button>
+    <!-- ═══════════════════════════════ DIAGRAMA DE FLUJO ══════════════════════════════════════ -->
+    <section class="card" id="sec-flowchart">
+      <div class="card-label">05</div>
+      <h2 class="card-title">DIAGRAMA DE FLUJO — BURBUJA</h2>
+      <p class="array-info">// algoritmo de ordenamiento ascendente y descendente</p>
+      <div class="flowchart-wrap" id="flowchart-svg"></div>
+    </section>
 
-            <div class="result-box hidden" id="search-result">
-                <div class="bubbles-container" id="search-bubbles"></div>
-                <div class="result-stats" id="search-stats"></div>
-            </div>
-        </section>
+    <!-- ═══════════════════════════════ CÓDIGO JAVA ══════════════════════════════════════ -->
+    <section class="card" id="sec-code">
+      <div class="card-label">06</div>
+      <h2 class="card-title">CÓDIGO FUENTE (JAVA)</h2>
+      <p class="array-info">// implementación en java para consola</p>
 
-        <section class="card hidden" id="sec-sort">
-            <div class="card-label">04</div>
-            <h2 class="card-title">ORDENAMIENTO BURBUJA</h2>
-
-            <button class="btn-confirm" id="btn-sort">
-                <span class="btn-arrow">►</span> EJECUTAR ORDENAMIENTO
-            </button>
-
-            <div class="hidden sort-results" id="sort-results">
-                <div class="sort-block">
-                    <h3 class="sort-subtitle">// ascendente ↑</h3>
-                    <div class="bubbles-container" id="asc-bubbles"></div>
-                    <div class="comparisons-badge" id="asc-comparisons"></div>
-                </div>
-
-                <div class="sort-block">
-                    <h3 class="sort-subtitle">// descendente ↓</h3>
-                    <div class="bubbles-container" id="desc-bubbles"></div>
-                    <div class="comparisons-badge" id="desc-comparisons"></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="card hidden" id="sec-report">
-            <div class="card-label">05</div>
-            <h2 class="card-title">REPORTE FINAL</h2>
-            <p class="array-info">// resumen completo del proceso de ordenamiento</p>
-
-            <div class="report-block" id="report-content">
-                <div class="sort-block">
-                    <h3 class="sort-subtitle">// array original</h3>
-                    <div class="bubbles-container" id="report-original"></div>
-                </div>
-
-                <div class="sort-block">
-                    <h3 class="sort-subtitle">// ascendente ↑</h3>
-                    <div class="bubbles-container" id="report-asc"></div>
-                    <div class="comparisons-badge" id="report-asc-comp"></div>
-                </div>
-
-                <div class="sort-block">
-                    <h3 class="sort-subtitle">// descendente ↓</h3>
-                    <div class="bubbles-container" id="report-desc"></div>
-                    <div class="comparisons-badge" id="report-desc-comp"></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="card" id="sec-flowchart">
-            <div class="card-label">06</div>
-            <h2 class="card-title">DIAGRAMA DE FLUJO — BURBUJA</h2>
-            <p class="array-info">// algoritmo de ordenamiento ascendente y descendente</p>
-            <div class="flowchart-wrap" id="flowchart-svg"></div>
-        </section>
-
-        <section class="card" id="sec-code">
-            <div class="card-label">07</div>
-            <h2 class="card-title">CÓDIGO FUENTE (JAVA)</h2>
-            <p class="array-info">// implementación en java para consola</p>
-
-            <div class="code-container">
-<pre><code>import java.util.Scanner;
+      <div class="code-container">
+        <pre><code>import java.util.Scanner;
 import java.util.Arrays;
 
 public class BubbleSort {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int[] arreglo = new int[0];
         int opcion = 0;
-
+        
         while (opcion != 5) {
-            System.out.println("\n===== MENÚ BUBBLE SORT =====");
+            System.out.println("\\n===== MENÚ BUBBLE SORT =====");
             System.out.println("1. Ingresar N números");
             System.out.println("2. Agregar más números al arreglo actual");
             System.out.println("3. Buscar un número");
@@ -174,12 +163,12 @@ public class BubbleSort {
             System.out.println("5. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
-
+            
             if (opcion == 1) {
                 System.out.print("Cantidad de números (N): ");
                 int n = scanner.nextInt();
                 arreglo = new int[n];
-                for (int i = 0; i < n; i++) {
+                for (int i = 0; i &lt; n; i++) {
                     System.out.print("Ingrese número " + (i + 1) + ": ");
                     arreglo[i] = scanner.nextInt();
                 }
@@ -187,8 +176,8 @@ public class BubbleSort {
                 System.out.print("¿Cuántos números más desea agregar?: ");
                 int m = scanner.nextInt();
                 int[] nuevo = new int[arreglo.length + m];
-                for (int i = 0; i < arreglo.length; i++) nuevo[i] = arreglo[i];
-                for (int i = 0; i < m; i++) {
+                for (int i = 0; i &lt; arreglo.length; i++) nuevo[i] = arreglo[i];
+                for (int i = 0; i &lt; m; i++) {
                     System.out.print("Ingrese número " + (i + 1) + ": ");
                     nuevo[arreglo.length + i] = scanner.nextInt();
                 }
@@ -198,7 +187,7 @@ public class BubbleSort {
                 int target = scanner.nextInt();
                 int pasos = 0;
                 boolean encontrado = false;
-                for (int i = 0; i < arreglo.length; i++) {
+                for (int i = 0; i &lt; arreglo.length; i++) {
                     pasos++;
                     if (arreglo[i] == target) {
                         System.out.println("Encontrado en posición [" + i + "]");
@@ -212,28 +201,28 @@ public class BubbleSort {
                 int[] asc = Arrays.copyOf(arreglo, arreglo.length);
                 int[] desc = Arrays.copyOf(arreglo, arreglo.length);
                 int compAsc = 0, compDesc = 0;
-
+                
                 // Burbuja Ascendente
-                for (int i = 0; i < asc.length - 1; i++) {
-                    for (int j = 0; j < asc.length - 1 - i; j++) {
+                for (int i = 0; i &lt; asc.length - 1; i++) {
+                    for (int j = 0; j &lt; asc.length - 1 - i; j++) {
                         compAsc++;
-                        if (asc[j] > asc[j + 1]) {
+                        if (asc[j] &gt; asc[j + 1]) {
                             int temp = asc[j]; asc[j] = asc[j + 1]; asc[j + 1] = temp;
                         }
                     }
                 }
-
+                
                 // Burbuja Descendente
-                for (int i = 0; i < desc.length - 1; i++) {
-                    for (int j = 0; j < desc.length - 1 - i; j++) {
+                for (int i = 0; i &lt; desc.length - 1; i++) {
+                    for (int j = 0; j &lt; desc.length - 1 - i; j++) {
                         compDesc++;
-                        if (desc[j] < desc[j + 1]) {
+                        if (desc[j] &lt; desc[j + 1]) {
                             int temp = desc[j]; desc[j] = desc[j + 1]; desc[j + 1] = temp;
                         }
                     }
                 }
-
-                System.out.println("\n--- REPORTE ---");
+                
+                System.out.println("\\n--- REPORTE ---");
                 System.out.println("a. Ascendente: " + Arrays.toString(asc));
                 System.out.println("a. Descendente: " + Arrays.toString(desc));
                 System.out.println("b. Comparaciones (Asc): " + compAsc);
@@ -243,16 +232,17 @@ public class BubbleSort {
         scanner.close();
     }
 }</code></pre>
-            </div>
-        </section>
+      </div>
+    </section>
 
-    </main>
+  </main>
 
-    <footer class="footer">
-        <p>Algoritmo de la Burbuja · Programación Tradicional I · Java</p>
-    </footer>
+  <footer class="footer">
+    <p>Algoritmo de la Burbuja · Programación Tradicional I · Java</p>
+  </footer>
 
-    <script src="bubble.js"></script>
-    <script src="ui.js"></script>
+  <script src="bubble.js"></script>
+  <script src="ui.js"></script>
 </body>
+
 </html>
