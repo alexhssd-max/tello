@@ -300,8 +300,8 @@ function buildFlowchart() {
 
   <!-- leer array -->
   <rect x="70" y="185" width="200" height="44" rx="8" fill="#111827" stroke="#2e3450" stroke-width="1"/>
-  <text x="170" y="204" text-anchor="middle" fill="#e8eaf6" font-size="12">Leer array[]</text>
-  <text x="170" y="220" text-anchor="middle" fill="#6b7280" font-size="11">n = arr.length</text>
+  <text x="170" y="204" text-anchor="middle" fill="#e8eaf6" font-size="12">n = arr.length</text>
+  <text x="170" y="220" text-anchor="middle" fill="#6b7280" font-size="11">Leer array[]</text>
 
   <line x1="170" y1="229" x2="170" y2="257" stroke="#4f7cff" stroke-width="1.5" marker-end="url(#arr)"/>
 
@@ -414,8 +414,8 @@ function buildFlowchart() {
 
   <!-- leer array -->
   <rect x="690" y="185" width="200" height="44" rx="8" fill="#12101f" stroke="#3d3460" stroke-width="1"/>
-  <text x="790" y="204" text-anchor="middle" fill="#e8eaf6" font-size="12">Leer array[]</text>
-  <text x="790" y="220" text-anchor="middle" fill="#6b7280" font-size="11">n = arr.length</text>
+  <text x="790" y="204" text-anchor="middle" fill="#e8eaf6" font-size="12">n = arr.length</text>
+  <text x="790" y="220" text-anchor="middle" fill="#6b7280" font-size="11">Leer array[]</text>
 
   <line x1="790" y1="229" x2="790" y2="257" stroke="#7c5cfc" stroke-width="1.5" marker-end="url(#arr)"/>
 
