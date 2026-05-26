@@ -12,8 +12,8 @@ let lastDesc = null;
 
 /* ═══════════════ Helpers DOM ═══════════════ */
 const $ = id => document.getElementById(id);
-const show = id => $( id).classList.remove('hidden');
-const hide = id => $( id).classList.add('hidden');
+const show = id => $(id).classList.remove('hidden');
+const hide = id => $(id).classList.add('hidden');
 const setErr = (id, msg) => $(id).textContent = msg;
 const clearErr = id => $(id).textContent = '';
 
@@ -174,9 +174,9 @@ $('btn-search').addEventListener('click', () => {
 $('btn-sort').addEventListener('click', () => {
   if (currentArray.length === 0) return;
 
-  const asc  = bubbleSortAsc(currentArray);
+  const asc = bubbleSortAsc(currentArray);
   const desc = bubbleSortDesc(currentArray);
-  
+
   lastAsc = asc;
   lastDesc = desc;
 
@@ -281,7 +281,7 @@ function buildFlowchart() {
   <line x1="480" y1="460" x2="790" y2="460" stroke="#fcd34d" stroke-width="1.5"/>
   <line x1="790" y1="460" x2="790" y2="485" stroke="#fcd34d" stroke-width="1.5" marker-end="url(#arr)"/>
 
-  <g transform="translate(0, 460)">
+  <g transform="translate(0, 420)">
   <!-- ════════════════════════════════════════
        LADO IZQUIERDO — ASCENDENTE
   ════════════════════════════════════════ -->
@@ -349,42 +349,42 @@ function buildFlowchart() {
   <line x1="170" y1="682" x2="170" y2="710" stroke="#4f7cff" stroke-width="1.5" marker-end="url(#arr)"/>
 
   <!-- SWAP -->
-  <rect x="70" y="710" width="200" height="68" rx="8" fill="#0f1a2e" stroke="#7c5cfc" stroke-width="1.5"/>
+  <rect x="70" y="710" width="200" height="84" rx="8" fill="#0f1a2e" stroke="#7c5cfc" stroke-width="1.5"/>
   <text x="170" y="728" text-anchor="middle" fill="#c4b5fd" font-size="12">SWAP</text>
   <text x="170" y="744" text-anchor="middle" fill="#39d98a" font-size="11">intercambios++</text>
   <text x="170" y="758" text-anchor="middle" fill="#6b7280" font-size="11">temp = arr[j]</text>
   <text x="170" y="770" text-anchor="middle" fill="#6b7280" font-size="11">arr[j] = arr[j+1]</text>
+  <text x="170" y="782" text-anchor="middle" fill="#6b7280" font-size="11">arr[j+1] = temp</text>
 
   <!-- NO → saltar swap (línea derecha) -->
   <line x1="270" y1="642" x2="295" y2="642" stroke="#4f7cff" stroke-width="1.5"/>
   <text x="282" y="635" text-anchor="middle" fill="#f7b731" font-size="11">NO</text>
-  <line x1="295" y1="642" x2="295" y2="778" stroke="#4f7cff" stroke-width="1.5"/>
-  <line x1="295" y1="778" x2="270" y2="778" stroke="#4f7cff" stroke-width="1.5" marker-end="url(#arr)"/>
-
-  <line x1="170" y1="778" x2="170" y2="790" stroke="#4f7cff" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="295" y1="642" x2="295" y2="817" stroke="#4f7cff" stroke-width="1.5"/>
+  <line x1="295" y1="817" x2="170" y2="817" stroke="#4f7cff" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="170" y1="794" x2="170" y2="840" stroke="#4f7cff" stroke-width="1.5" marker-end="url(#arr)"/>
 
   <!-- j++ -->
-  <rect x="70" y="790" width="200" height="36" rx="8" fill="#111827" stroke="#2e3450" stroke-width="1"/>
-  <text x="170" y="812" text-anchor="middle" fill="#e8eaf6" font-size="12">j = j + 1</text>
+  <rect x="70" y="840" width="200" height="36" rx="8" fill="#111827" stroke="#2e3450" stroke-width="1"/>
+  <text x="170" y="862" text-anchor="middle" fill="#e8eaf6" font-size="12">j = j + 1</text>
 
   <!-- vuelve a ¿j < n-1-i? -->
-  <line x1="70" y1="808" x2="30" y2="808" stroke="#4f7cff" stroke-width="1.5"/>
-  <line x1="30" y1="808" x2="30" y2="534" stroke="#4f7cff" stroke-width="1.5"/>
+  <line x1="70" y1="858" x2="30" y2="858" stroke="#4f7cff" stroke-width="1.5"/>
+  <line x1="30" y1="858" x2="30" y2="534" stroke="#4f7cff" stroke-width="1.5"/>
   <line x1="30" y1="534" x2="70" y2="534" stroke="#4f7cff" stroke-width="1.5" marker-end="url(#arr)"/>
 
   <!-- NO de j < n-1-i → i++ -->
   <line x1="270" y1="534" x2="310" y2="534" stroke="#4f7cff" stroke-width="1.5"/>
   <text x="290" y="527" text-anchor="middle" fill="#f7b731" font-size="11">NO</text>
-  <line x1="310" y1="534" x2="310" y2="856" stroke="#4f7cff" stroke-width="1.5"/>
-  <line x1="310" y1="856" x2="270" y2="856" stroke="#4f7cff" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="310" y1="534" x2="310" y2="938" stroke="#4f7cff" stroke-width="1.5"/>
+  <line x1="310" y1="938" x2="270" y2="938" stroke="#4f7cff" stroke-width="1.5" marker-end="url(#arr)"/>
 
   <!-- i++ -->
-  <rect x="70" y="838" width="200" height="36" rx="8" fill="#111827" stroke="#2e3450" stroke-width="1"/>
-  <text x="170" y="860" text-anchor="middle" fill="#e8eaf6" font-size="12">i = i + 1</text>
+  <rect x="70" y="920" width="200" height="36" rx="8" fill="#111827" stroke="#2e3450" stroke-width="1"/>
+  <text x="170" y="942" text-anchor="middle" fill="#e8eaf6" font-size="12">i = i + 1</text>
 
   <!-- vuelve a ¿i < n-1? -->
-  <line x1="70" y1="856" x2="10" y2="856" stroke="#4f7cff" stroke-width="1.5"/>
-  <line x1="10" y1="856" x2="10" y2="361" stroke="#4f7cff" stroke-width="1.5"/>
+  <line x1="70" y1="938" x2="10" y2="938" stroke="#4f7cff" stroke-width="1.5"/>
+  <line x1="10" y1="938" x2="10" y2="361" stroke="#4f7cff" stroke-width="1.5"/>
   <line x1="10" y1="361" x2="70" y2="361" stroke="#4f7cff" stroke-width="1.5" marker-end="url(#arr)"/>
 
   <!-- FIN asc -->
@@ -463,42 +463,41 @@ function buildFlowchart() {
   <line x1="790" y1="682" x2="790" y2="710" stroke="#7c5cfc" stroke-width="1.5" marker-end="url(#arr)"/>
 
   <!-- SWAP -->
-  <rect x="690" y="710" width="200" height="68" rx="8" fill="#12101f" stroke="#4f7cff" stroke-width="1.5"/>
+  <rect x="690" y="710" width="200" height="80" rx="8" fill="#12101f" stroke="#4f7cff" stroke-width="1.5"/>
   <text x="790" y="728" text-anchor="middle" fill="#c4b5fd" font-size="12">SWAP</text>
   <text x="790" y="744" text-anchor="middle" fill="#39d98a" font-size="11">intercambios++</text>
   <text x="790" y="758" text-anchor="middle" fill="#6b7280" font-size="11">temp = arr[j]</text>
   <text x="790" y="770" text-anchor="middle" fill="#6b7280" font-size="11">arr[j] = arr[j+1]</text>
+  <text x="790" y="782" text-anchor="middle" fill="#6b7280" font-size="11">arr[j+1] = temp</text>
 
   <!-- NO → saltar swap -->
   <line x1="690" y1="642" x2="655" y2="642" stroke="#7c5cfc" stroke-width="1.5"/>
   <text x="672" y="635" text-anchor="middle" fill="#f7b731" font-size="11">NO</text>
-  <line x1="655" y1="642" x2="655" y2="778" stroke="#7c5cfc" stroke-width="1.5"/>
-  <line x1="655" y1="778" x2="690" y2="778" stroke="#7c5cfc" stroke-width="1.5" marker-end="url(#arr)"/>
-
-  <line x1="790" y1="778" x2="790" y2="790" stroke="#7c5cfc" stroke-width="1.5" marker-end="url(#arr)"/>
-
+  <line x1="655" y1="642" x2="655" y2="817" stroke="#7c5cfc" stroke-width="1.5"/>
+  <line x1="655" y1="817" x2="790" y2="817" stroke="#7c5cfc" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="790" y1="778" x2="790" y2="840" stroke="#7c5cfc" stroke-width="1.5" marker-end="url(#arr)"/>
   <!-- j++ -->
-  <rect x="690" y="790" width="200" height="36" rx="8" fill="#12101f" stroke="#3d3460" stroke-width="1"/>
-  <text x="790" y="812" text-anchor="middle" fill="#e8eaf6" font-size="12">j = j + 1</text>
+  <rect x="690" y="840" width="200" height="36" rx="8" fill="#12101f" stroke="#3d3460" stroke-width="1"/>
+  <text x="790" y="862" text-anchor="middle" fill="#e8eaf6" font-size="12">j = j + 1</text>
 
   <!-- vuelve a ¿j < n-1-i? -->
-  <line x1="890" y1="808" x2="925" y2="808" stroke="#7c5cfc" stroke-width="1.5"/>
-  <line x1="925" y1="808" x2="925" y2="534" stroke="#7c5cfc" stroke-width="1.5"/>
+  <line x1="890" y1="858" x2="925" y2="858" stroke="#7c5cfc" stroke-width="1.5"/>
+  <line x1="925" y1="858" x2="925" y2="534" stroke="#7c5cfc" stroke-width="1.5"/>
   <line x1="925" y1="534" x2="890" y2="534" stroke="#7c5cfc" stroke-width="1.5" marker-end="url(#arr)"/>
 
   <!-- NO de j < n-1-i → i++ -->
   <line x1="690" y1="534" x2="650" y2="534" stroke="#7c5cfc" stroke-width="1.5"/>
   <text x="670" y="527" text-anchor="middle" fill="#f7b731" font-size="11">NO</text>
-  <line x1="650" y1="534" x2="650" y2="856" stroke="#7c5cfc" stroke-width="1.5"/>
-  <line x1="650" y1="856" x2="690" y2="856" stroke="#7c5cfc" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="650" y1="534" x2="650" y2="938" stroke="#7c5cfc" stroke-width="1.5"/>
+  <line x1="650" y1="938" x2="690" y2="938" stroke="#7c5cfc" stroke-width="1.5" marker-end="url(#arr)"/>
 
   <!-- i++ -->
-  <rect x="690" y="838" width="200" height="36" rx="8" fill="#12101f" stroke="#3d3460" stroke-width="1"/>
-  <text x="790" y="860" text-anchor="middle" fill="#e8eaf6" font-size="12">i = i + 1</text>
+  <rect x="690" y="920" width="200" height="36" rx="8" fill="#12101f" stroke="#3d3460" stroke-width="1"/>
+  <text x="790" y="942" text-anchor="middle" fill="#e8eaf6" font-size="12">i = i + 1</text>
 
   <!-- vuelve a ¿i < n-1? -->
-  <line x1="890" y1="856" x2="940" y2="856" stroke="#7c5cfc" stroke-width="1.5"/>
-  <line x1="940" y1="856" x2="940" y2="361" stroke="#7c5cfc" stroke-width="1.5"/>
+  <line x1="890" y1="938" x2="940" y2="938" stroke="#7c5cfc" stroke-width="1.5"/>
+  <line x1="940" y1="938" x2="940" y2="361" stroke="#7c5cfc" stroke-width="1.5"/>
   <line x1="940" y1="361" x2="890" y2="361" stroke="#7c5cfc" stroke-width="1.5" marker-end="url(#arr)"/>
 
   <!-- FIN desc -->
@@ -512,53 +511,9 @@ function buildFlowchart() {
   <text x="600" y="442" text-anchor="middle" fill="#6b7280" font-size="10">descendente</text>
 
   <!-- ════════════════════════════════════════
-       LEYENDA
-  ════════════════════════════════════════ -->
-  <rect x="340" y="960" width="280" height="160" rx="10" fill="#111318" stroke="#1f2330" stroke-width="1"/>
-  <text x="480" y="984" text-anchor="middle" fill="#6b7280" font-size="11" letter-spacing="1">LEYENDA</text>
-
-  <!-- elipse = inicio/fin -->
-  <ellipse cx="370" cy="1010" rx="22" ry="12" fill="#1a2040" stroke="#4f7cff" stroke-width="1.5"/>
-  <text x="400" y="1014" fill="#e8eaf6" font-size="11">Inicio / Fin</text>
-
-  <!-- rect = proceso -->
-  <rect x="350" y="1032" width="40" height="20" rx="4" fill="#111827" stroke="#2e3450" stroke-width="1"/>
-  <text x="400" y="1046" fill="#e8eaf6" font-size="11">Proceso / Instrucción</text>
-
-  <!-- rombo = decisión -->
-  <polygon points="370,1068 390,1078 370,1088 350,1078" fill="#161c2e" stroke="#4f7cff" stroke-width="1.5"/>
-  <text x="400" y="1082" fill="#e8eaf6" font-size="11">Decisión (condición)</text>
-
-  <!-- swap box -->
-  <rect x="350" y="1100" width="40" height="20" rx="4" fill="#0f1a2e" stroke="#7c5cfc" stroke-width="1.5"/>
-  <text x="400" y="1114" fill="#e8eaf6" font-size="11">Intercambio (SWAP)</text>
-
-  <!-- resultado -->
-  <rect x="350" y="1130" width="40" height="20" rx="4" fill="#0f1f17" stroke="#39d98a" stroke-width="1.5"/>
-  <text x="400" y="1144" fill="#e8eaf6" font-size="11">Resultado / Salida</text>
-
-  <!-- ════════════════════════════════════════
-       COMPLEJIDAD
-  ════════════════════════════════════════ -->
-  <rect x="100" y="960" width="185" height="125" rx="10" fill="#111318" stroke="#1f2330" stroke-width="1"/>
-  <text x="192" y="984" text-anchor="middle" fill="#6b7280" font-size="11" letter-spacing="1">COMPLEJIDAD</text>
-
-  <text x="115" y="1008" fill="#a5b4fc" font-size="12">Peor caso:</text>
-  <text x="115" y="1026" fill="#e8eaf6" font-size="13" font-weight="600">O(n²)</text>
-
-  <text x="115" y="1050" fill="#a5b4fc" font-size="12">Intercambios (Máx):</text>
-  <text x="115" y="1068" fill="#e8eaf6" font-size="12">n(n-1) / 2</text>
-
-  <text x="115" y="1090" fill="#a5b4fc" font-size="12">Pasadas:</text>
-  <text x="115" y="1108" fill="#e8eaf6" font-size="12">n - 1</text>
-
-  <!-- ════════════════════════════════════════
        DIAGRAMA BÚSQUEDA LINEAL
   ════════════════════════════════════════ -->
-  <g transform="translate(0, 40)">
-    <rect x="30" y="1110" width="900" height="20" rx="4" fill="#111827"/>
-    <text x="480" y="1124" text-anchor="middle" fill="#4f7cff" font-size="11"
-          letter-spacing="2">BÚSQUEDA LINEAL (array original)</text>
+  <g transform="translate(0, -150)">
 
     <!-- INICIO búsqueda -->
     <ellipse cx="480" cy="1165" rx="60" ry="22" fill="#1a2040" stroke="#f7b731" stroke-width="1.5"/>
@@ -637,7 +592,7 @@ function buildFlowchart() {
 /* ═══════════════ Init ═══════════════ */
 document.addEventListener('DOMContentLoaded', () => {
   buildFlowchart();
-  
+
   // Dynamic inputs logic
   function updateDynamicInputs(countId, containerId) {
     const count = parseInt($(countId).value, 10);
@@ -646,7 +601,7 @@ document.addEventListener('DOMContentLoaded', () => {
       container.innerHTML = '';
       return;
     }
-    
+
     const currentCount = container.children.length;
     if (count > currentCount) {
       for (let i = currentCount; i < count; i++) {
@@ -665,7 +620,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   $('inp-n').addEventListener('input', () => updateDynamicInputs('inp-n', 'dynamic-inputs'));
   $('add-n').addEventListener('input', () => updateDynamicInputs('add-n', 'dynamic-add-inputs'));
-  
+
   // Inicializar si el input ya tiene valor
   if ($('inp-n').value) updateDynamicInputs('inp-n', 'dynamic-inputs');
   if ($('add-n').value) updateDynamicInputs('add-n', 'dynamic-add-inputs');
